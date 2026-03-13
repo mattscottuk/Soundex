@@ -1,2 +1,0 @@
-# Soundex
-American Soundex Encoder
