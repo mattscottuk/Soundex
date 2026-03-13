@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.SoundexEncoderTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-03-13T22:13:32.396Z" hostname="mattscott-ThinkPad-P15v-Gen-3" time="0.093">
+  <properties/>
+  <testcase name="shortNameIsPaddedWithZeros()" classname="org.example.SoundexEncoderTest" time="0.048"/>
+  <testcase name="matthewToSoundex()" classname="org.example.SoundexEncoderTest" time="0.002"/>
+  <testcase name="mustContainAtLeastOneLetter()" classname="org.example.SoundexEncoderTest" time="0.004"/>
+  <testcase name="danielToSoundex()" classname="org.example.SoundexEncoderTest" time="0.002"/>
+  <testcase name="adjacentSameCodeLettersAreCollapsed()" classname="org.example.SoundexEncoderTest" time="0.001"/>
+  <testcase name="vowelSeparatesSameCodeLetters()" classname="org.example.SoundexEncoderTest" time="0.001"/>
+  <testcase name="mustNotBeEmpty()" classname="org.example.SoundexEncoderTest" time="0.002"/>
+  <testcase name="mustBeAlphaCharacters()" classname="org.example.SoundexEncoderTest" time="0.002"/>
+  <testcase name="mustNotBeNull()" classname="org.example.SoundexEncoderTest" time="0.003"/>
+  <testcase name="lowercaseInputIsHandled()" classname="org.example.SoundexEncoderTest" time="0.002"/>
+  <testcase name="hAndWDoNotSeparateSameCodeLetters()" classname="org.example.SoundexEncoderTest" time="0.002"/>
+  <testcase name="alexToSoundex()" classname="org.example.SoundexEncoderTest" time="0.002"/>
+  <testcase name="markToSoundex()" classname="org.example.SoundexEncoderTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

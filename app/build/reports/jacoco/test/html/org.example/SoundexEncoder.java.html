@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SoundexEncoder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">SoundexEncoder.java</span></div><h1>SoundexEncoder.java</h1><pre class="source lang-java linenums">package org.example;
+
+
+<span class="fc" id="L4">public class SoundexEncoder {</span>
+
+<span class="fc" id="L6">    private static final char[] SOUNDEX_TABLE = {</span>
+        '0', // A
+        '1', // B
+        '2', // C
+        '3', // D
+        '0', // E
+        '1', // F
+        '2', // G
+        '0', // H
+        '0', // I
+        '2', // J
+        '2', // K
+        '4', // L
+        '5', // M
+        '5', // N
+        '0', // O
+        '1', // P
+        '2', // Q
+        '6', // R
+        '2', // S
+        '3', // T
+        '0', // U
+        '1', // V
+        '0', // W
+        '2', // X
+        '0', // Y
+        '2'  // Z
+    };
+
+    public String nameToSoundex(String name) {
+<span class="fc bfc" id="L36" title="All 4 branches covered.">        if (name == null || name.isEmpty()) {</span>
+<span class="fc" id="L37">            throw new IllegalArgumentException(&quot;Input name must not be null or empty.&quot;);</span>
+        }
+
+<span class="fc" id="L40">        final int len = name.length();</span>
+
+<span class="fc" id="L42">        char[] letters = new char[len];</span>
+<span class="fc" id="L43">        int letterCount = 0;</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        for (int i = 0; i &lt; len; i++) {</span>
+<span class="fc" id="L45">            char c = name.charAt(i);</span>
+<span class="pc bpc" id="L46" title="1 of 4 branches missed.">            if (c &gt;= 'a' &amp;&amp; c &lt;= 'z') {</span>
+<span class="fc" id="L47">                letters[letterCount++] = (char) (c - 32); </span>
+<span class="pc bpc" id="L48" title="1 of 4 branches missed.">            } else if (c &gt;= 'A' &amp;&amp; c &lt;= 'Z') {</span>
+<span class="fc" id="L49">                letters[letterCount++] = c;</span>
+            }
+        }
+
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (letterCount == 0) {</span>
+<span class="fc" id="L54">            throw new IllegalArgumentException(&quot;Input name must contain at least one letter.&quot;);</span>
+        }
+
+<span class="fc" id="L57">        char[] result = {'0', '0', '0', '0'}; </span>
+<span class="fc" id="L58">        result[0] = letters[0];               </span>
+
+<span class="fc" id="L60">        int resultIndex = 1;</span>
+
+<span class="fc" id="L62">        char prevCode = codeOf(letters[0]);</span>
+
+<span class="fc bfc" id="L64" title="All 4 branches covered.">        for (int i = 1; i &lt; letterCount &amp;&amp; resultIndex &lt; 4; i++) {</span>
+<span class="fc" id="L65">            char c    = letters[i];</span>
+<span class="fc" id="L66">            char code = codeOf(c);</span>
+
+<span class="fc bfc" id="L68" title="All 2 branches covered.">            if (code == '0') {</span>
+
+<span class="fc bfc" id="L70" title="All 4 branches covered.">                if (c != 'H' &amp;&amp; c != 'W') {</span>
+<span class="fc" id="L71">                    prevCode = '0'; </span>
+                }
+
+            } else {
+
+<span class="fc bfc" id="L76" title="All 2 branches covered.">                if (code != prevCode) {</span>
+<span class="fc" id="L77">                    result[resultIndex++] = code;</span>
+                }
+<span class="fc" id="L79">                prevCode = code;</span>
+            }
+        }
+
+<span class="fc" id="L83">        return new String(result);</span>
+    }
+
+    private static char codeOf(char upperCaseLetter) {
+<span class="fc" id="L87">        return SOUNDEX_TABLE[upperCaseLetter - 'A'];</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
